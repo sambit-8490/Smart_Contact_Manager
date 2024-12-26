@@ -6,7 +6,7 @@ COPY . .
 
 RUN mvn clean install 
 
-FROM openjdk-23-jdk-silm 
+FROM openjdk-21-jdk-silm 
 
 WORKDIR /app1
 
