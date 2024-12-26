@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: mysql
+    image: mysql:8
     container_name: mysql_db
     environment:
       MYSQL_ROOT_PASSWORD: admin
@@ -12,6 +12,9 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+
+      volumes:
+      - ./mysql_data:/var/lib/mysql
 
   springboot:
     build: .
@@ -28,3 +31,5 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+volumes:
+  mysql_data:
