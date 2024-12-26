@@ -13,7 +13,7 @@ services:
       timeout: 5s
       retries: 3
 
-      volumes:
+    volumes:
       - ./mysql_data:/var/lib/mysql
 
   springboot:
