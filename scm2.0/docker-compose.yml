@@ -1,13 +1,15 @@
 services:
-  mysql:
-    image: mysql:8
-    container_name: mysql_db
-    environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: admin
-      MYSQL_DATABASE: scm
-    ports:
-      - "3307:3306"
+  mysql_db:
+  image: mysql:8.0
+  container_name: mysql_db
+  environment:
+    MYSQL_ROOT_PASSWORD: admin
+    MYSQL_DATABASE: scm
+    MYSQL_USER: root
+    MYSQL_PASSWORD: admin
+  ports:
+    - "3306:3306"
+
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "16.16.24.173:3307"]
       interval: 10s
