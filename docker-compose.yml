@@ -17,6 +17,18 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
 
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmydmin_con
+    ports:
+     - "8081:80"
+    environment: 
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: admin
+    depends_on:
+      - mysql_db
 
   springboot:
     build: .
@@ -31,7 +43,7 @@ services:
     ports:
       - "8082:8080"
     depends_on:
-      mysql:
+      mysql_db:
         condition: service_healthy
 volumes:
   mysql_data:
