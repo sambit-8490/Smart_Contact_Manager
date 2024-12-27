@@ -9,7 +9,7 @@ services:
     ports:
       - "3307:3306"
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "16.16.24.173:3307"]
       interval: 10s
       timeout: 5s
       retries: 3
