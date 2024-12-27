@@ -4,7 +4,7 @@ services:
     container_name: mysql_db
     environment:
       MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_PASSWORD: admin
       MYSQL_DATABASE: scm
     ports:
       - "3307:3306"
