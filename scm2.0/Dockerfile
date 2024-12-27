@@ -1,16 +1,18 @@
-FROM maven AS build 
+# Stage 1: Build
+FROM maven:3.8.8-openjdk-17 AS build
 
 WORKDIR /app
 
 COPY . .
 
-RUN mvn clean package 
+RUN mvn clean package -DskipTests
 
-FROM openjdk-21-jdk-silm 
+# Stage 2: Runtime
+FROM openjdk:21-jdk-slim
 
-WORKDIR /app1
+WORKDIR /app
 
-COPY --from=build /app/target/*.jar ./scm.jar
+COPY --from=build /app/target/*.jar scm.jar
 
 EXPOSE 8080
 
